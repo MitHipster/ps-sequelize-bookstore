@@ -14,7 +14,15 @@ exports.allUsers = async (req, res) => {
 exports.singleUser = async (req, res) => {
 	console.log(req.params.id);
 	try {
-		const user = await models.User.findByPk(req.params.id);
+		const user = await models.User.findByPk(req.params.id, {
+			include: [
+				{
+					model: models.Book,
+					as: 'Reading',
+					attributes: ['title', 'author']
+				}
+			]
+		});
 		res.json(user);
 	} catch (error) {
 		res.status(404).send(error);
