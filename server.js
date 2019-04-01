@@ -2,12 +2,16 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// setup the Express middlware
+const db = require('./server/models/db');
+
+// setup the Express middleware
 require('./server/middleware/middleware')(app);
 
 // setup the api
 require('./server/api')(app);
 
-app.listen(port, () => {
-  console.log('running server on port ' + port);
-})
+db.sequelize.sync().then(() => {
+	app.listen(port, () => {
+		console.log('running server on port ' + port);
+	});
+});
