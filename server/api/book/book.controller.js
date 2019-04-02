@@ -16,7 +16,6 @@ exports.saveUserBook = async (req, res) => {
 
 	try {
 		const book = await models.Book.findByPk(bookId);
-		debugger;
 		await book.addReader(userId);
 		res.json({ success: 'Book was added to list.' });
 	} catch (error) {
