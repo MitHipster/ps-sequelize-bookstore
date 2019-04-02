@@ -46,7 +46,7 @@ exports.saveUserFav = async (req, res) => {
 	}
 };
 
-exports.saveUser = async (req, res) => {
+exports.addUser = async (req, res) => {
 	const name = req.body.name;
 
 	try {
