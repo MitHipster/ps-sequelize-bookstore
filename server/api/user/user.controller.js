@@ -45,3 +45,16 @@ exports.saveUserFav = async (req, res) => {
 		res.status(404).send(error);
 	}
 };
+
+exports.saveUser = async (req, res) => {
+	const name = req.body.name;
+
+	try {
+		const user = await models.User.create({
+			name
+		});
+		res.json(user);
+	} catch (error) {
+		res.status(404).send(error);
+	}
+};
