@@ -22,6 +22,16 @@ export class BookService {
               );
   }
 
+  addBook(book: Book): Observable<Book> {
+    return this
+              .http
+              .post<Book>(`${this.API}/addBook`, book)
+              .pipe(
+                tap(data => console.log(JSON.stringify(data))),
+                catchError(this.handleError)
+              );
+  }
+
   saveUserBook(newBook: {}): Observable<any> {
     return this
               .http

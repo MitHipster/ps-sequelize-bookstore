@@ -22,3 +22,18 @@ exports.saveUserBook = async (req, res) => {
 		res.status(404).send(error);
 	}
 };
+
+exports.addBook = async (req, res) => {
+	const { title, author, year } = req.body;
+
+	try {
+		const book = await models.Book.create({
+			title,
+			author,
+			year
+		});
+		res.json(book);
+	} catch (error) {
+		res.status(404).send(error);
+	}
+};

@@ -2,6 +2,7 @@
      fxLayoutAlign="space-around start"
      class="container-top">
   <div fxFlex="60%">
+    <form #addBookForm="ngForm" (ngSubmit)="saveBook(addBookForm.value)">
     <mat-card>
         <mat-card-header>Add Book</mat-card-header>
       <mat-card-content fxLayout="column" fxLayoutAlign="center center">
@@ -9,21 +10,27 @@
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Title</mat-label>
             <input matInput
-                  placeholder="Title">
+                  placeholder="Title"
+                  name="title"
+                  ngModel>
             <mat-icon matSuffix>book</mat-icon>
           </mat-form-field>
           <!--author-->
           <mat-form-field class="full-width" appearance="outline">
               <mat-label>Author</mat-label>
               <input matInput
-                    placeholder="Author">
+                    placeholder="Author"
+                    name="author"
+                    ngModel>
               <mat-icon matSuffix>person</mat-icon>
             </mat-form-field>
             <!--year-->
           <mat-form-field class="full-width" appearance="outline">
               <mat-label>Year</mat-label>
               <input matInput
-                    placeholder="Year">
+                    placeholder="Year"
+                    name="year"
+                    ngModel>
               <mat-icon matSuffix>date_range</mat-icon>
             </mat-form-field>
           <mat-card-actions fxLayout="column">
@@ -35,5 +42,6 @@
         </mat-card-actions>
      </mat-card-content>
     </mat-card>
+    </form>
   </div>
 </div>
